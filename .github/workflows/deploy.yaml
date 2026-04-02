@@ -30,12 +30,11 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}  # SSH private key for authentication
         
           script: |
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.12.2/bin
-            cd /home/ubuntu/PROJECT/UI/cspro-plane-ui
+            cd /home/ubuntu/cspro-plane-ui
             git pull origin main
-            npm run build   
+            npm run build
             sudo systemctl restart nginx  # Restart nginx server
-            pm2 restart plane-granthium   # restart pm2
+            pm2 restart frontend   # restart pm2
    
 
 
